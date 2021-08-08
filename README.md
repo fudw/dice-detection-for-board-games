@@ -1,4 +1,4 @@
-# object_detection_for_boardgames
+# Dice Detection for Board Games
 
 ### Work in progress
 <br/><br/>
