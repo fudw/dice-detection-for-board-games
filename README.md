@@ -22,7 +22,7 @@ Example from the public dice dataset<br/>
 <br/>
 ## Change log
 
-v01.2 Constructed data augmentation pipeline
-v01.1 Constructed pytorch datasets and bounding box visualisation
+v01.2 Constructed data augmentation pipeline with Albumentations, which also transforms bounding boxes and labels accordingly<br/>
+v01.1 Constructed pytorch datasets and bounding box visualisation<br/>
 ### 09.08.2021
-v01 Constructed dataframe for metadata
+v01 Constructed dataframe for metadata<br/>
