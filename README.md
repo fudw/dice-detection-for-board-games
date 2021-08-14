@@ -22,6 +22,7 @@ Example from the public dice dataset<br/>
 <br/>
 ## Change log
 
+v01.3 Prepared files in accordance with yolov5 requirements
 v01.2 Constructed data augmentation pipeline with Albumentations, which also transforms bounding boxes and labels accordingly<br/>
 v01.1 Constructed pytorch datasets and bounding box visualisation<br/>
 ### 09.08.2021
