@@ -21,7 +21,7 @@ This is where a Deep Learning-based computer vision solution comes in, because t
 Example from the public dice dataset<br/>
 <br/>
 ## Change log
-
+v01.4 Trained for 100 epochs, losses still dropping. mAP@0.5 ~0.45<br/>
 v01.3 Prepared files in accordance with yolov5 requirements<br/>
 v01.2 Constructed data augmentation pipeline with Albumentations, which also transforms bounding boxes and labels accordingly<br/>
 v01.1 Constructed pytorch datasets and bounding box visualisation<br/>
