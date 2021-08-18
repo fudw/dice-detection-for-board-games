@@ -21,7 +21,8 @@ This is where a Deep Learning-based computer vision solution comes in, because t
 Example from the public dice dataset<br/>
 <br/>
 ## Change log
-v01.5 Trained for 500 epochs, losses mostly plateured. On val set mAP@0.5 0.988; F1 0.97 at 0.528 confidence for all classes; no notable variation among 6 classes.
+v01.6 Trained for 500 epochs from COCO weights with Adam optimiser instead of SGD and added up-down flipping augmentation. Losses drop much more slowly; at the end of 500 epochs losses are still dropping and mAP@0.5 ~0.90 and F1 0.84 at 0.409 confidence.<br/>
+v01.5 Trained for 500 epochs, losses mostly plateured. On val set mAP@0.5 0.988; F1 0.97 at 0.528 confidence for all classes; no notable variation among 6 classes.<br/>
 v01.4 Trained for 100 epochs, losses still dropping. mAP@0.5 ~0.45<br/>
 v01.3 Prepared files in accordance with yolov5 requirements<br/>
 v01.2 Constructed data augmentation pipeline with Albumentations, which also transforms bounding boxes and labels accordingly<br/>
