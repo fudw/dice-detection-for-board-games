@@ -21,13 +21,20 @@ This is where a Deep Learning-based computer vision solution comes in, because t
 Example from the public dice dataset<br/>
 <br/>
 ## Change log
-v1.08 Trained for 500 epochs from COCO weights with SGD optimiser and up-down random flip. Train and val losses still drop slightly more slowly than v01.5; up-down random flip doesn't seem to help with val performance either, possibly because data don't have much variation since images all taken from a similar viewpoint.<br/>
-v1.07 Trained for 500 epochs from COCO weights with Adam optimiser, without up-down random flip. Train and val losses still drop more slowly than v01.5; adam optimiser seems to converge less efficiently than SGD for this model<br/>
-v1.06 Trained for 500 epochs from COCO weights with Adam optimiser instead of SGD and added p=0.5 up-down random flip augmentation. Losses drop much more slowly than v01.5; at the end of 500 epochs losses are still dropping and mAP@0.5 ~0.90 and F1 0.84 at 0.409 confidence.<br/>
+v1.08 Trained for 500 epochs from COCO weights with SGD optimiser and up-down random flip. Train and val losses still drop slightly more slowly than v01.5; up-down random flip doesn't seem to help with val performance either, possibly because data don't have much variation since images all taken from a similar viewpoint.
+
+v1.07 Trained for 500 epochs from COCO weights with Adam optimiser, without up-down random flip. Train and val losses still drop more slowly than v01.5; adam optimiser seems to converge less efficiently than SGD for this model.
+
+v1.06 Trained for 500 epochs from COCO weights with Adam optimiser instead of SGD and added p=0.5 up-down random flip augmentation. Losses drop much more slowly than v01.5; at the end of 500 epochs losses are still dropping and mAP@0.5 ~0.90 and F1 0.84 at 0.409 confidence.
+
 v1.05 Trained for 500 epochs, losses mostly plateured. On val set mAP@0.5 0.988; F1 0.97 at 0.528 confidence for all classes; no notable variation among 6 classes.<br/>
-v1.04 Trained for 100 epochs, losses still dropping. mAP@0.5 ~0.45<br/>
-v1.03 Prepared files in accordance with yolov5 requirements<br/>
-v1.02 Constructed data augmentation pipeline with Albumentations, which also transforms bounding boxes and labels accordingly<br/>
-v1.01 Constructed pytorch datasets and bounding box visualisation<br/>
+v1.04 Trained for 100 epochs, losses still dropping. mAP@0.5 ~0.45
+
+v1.03 Prepared files in accordance with yolov5 requirements.
+
+v1.02 Constructed data augmentation pipeline with Albumentations, which also transforms bounding boxes and labels accordingly.
+
+v1.01 Constructed pytorch datasets and bounding box visualisation.
+
 ### 09.08.2021
-v1.0 Constructed dataframe for metadata<br/>
+v1.0 Constructed dataframe for metadata.
