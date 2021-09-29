@@ -11,8 +11,8 @@ This is where a Deep Learning-based computer vision solution comes in, because t
 ## Plan of action
 1) I have found a public [dataset](https://public.roboflow.com/object-detection/dice/) of (approximately) isometric images of dice with class labels and bounding boxes, some on a table and some on a Catan board. An example is shown below. I will use this dataset for pretraining a yolov5 model in PyTorch;
 2) I will collect a relatively small set of data using my colleague's own set of dice, on a background and under lighting conditions comparable to in a *real* gaming session;
-3) I will label the images by drawing bounding boxes around the dice in the images, specifically around the top side only, because in the isometric view sides of the dice facing sideways are also visible and can potentially confuse the model;
-4) I will fine tune the pretrained model on this new dataset;    ***<--Currently Here***
+3) I will label the images by drawing bounding boxes around the dice in the images, specifically around the top side only, because in the isometric view sides of the dice facing sideways are also visible and can potentially confuse the model;  ***<--Currently Here***
+4) I will fine tune the pretrained model on this new dataset;    
 5) If the performance is good enough (>0.95 on the F1 score metric on each individual class as tentatively agreed), we will deploy this model to run on a PC which my colleague will bring to the next gaming session and test it *in production*;
 6) If the performance degrades on *real* data, I will add images collected there to the training data and tune the model again.
 
