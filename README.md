@@ -21,6 +21,8 @@ This is where a Deep Learning-based computer vision solution comes in, because t
 Example from the public dice dataset<br/>
 <br/>
 ## Change log
+v1.10 Split the new dataset of 20 images into 14:6 train:val. Fine-tuned pretrained model on this small dataset with parameters of the first 10 layers frozen. 
+
 v1.09 The pre-trained model performs poorly on the new test dataset, which consists of much higher resolution images (4032x3024) taken by an iPhone, of different-looking dice collected in lighting and background conditions dissimiliar to the pre-training dataset. Based on labels manually created by myself, for all classes Precision: 0.0836; Recall: 0.21; mAP@0.5: 0.0536; mAP@0.5-0.95: 0.0273. Changing input size, because test images are much larger than training images does not make a difference. 
 
 v1.08 Trained for 500 epochs from COCO weights with SGD optimiser and up-down random flip. Train and val losses still drop slightly more slowly than v01.5; up-down random flip doesn't seem to help with val performance either, possibly because data don't have much variation since images all taken from a similar viewpoint.
