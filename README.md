@@ -21,7 +21,7 @@ This is where a Deep Learning-based computer vision solution comes in, because t
 Example from the public dice dataset<br/>
 <br/>
 ## Change log
-v1.10 Split the new dataset of 20 images into 14:6 train:val. Fine-tuned pretrained model on this small dataset with parameters of the first 10 layers frozen. 
+v1.10 Split the new dataset of 20 images into 14:6 train:val. Fine-tuned pretrained model on this small dataset. Experimented with: 1) Adam optimizer better than SGD; 2) 0.001 LR better than 0.01; 3) Allowing all layers to train better than freezing parameters of the first 10 layers; 4) 1024 input image size vastly better than 512. Initial baseline performance plateaus after 500 epochs with mAP@0.5 ~0.44, F1 score 0.41 at 0.179 confidence. Best run performance plateaus after 50 epochs with mAP@0.5 ~0.995 and F1 1.0 at 0.836 confidence.
 
 v1.09 The pre-trained model performs poorly on the new test dataset, which consists of much higher resolution images (4032x3024) taken by an iPhone, of different-looking dice collected in lighting and background conditions dissimiliar to the pre-training dataset. Based on labels manually created by myself, for all classes Precision: 0.0836; Recall: 0.21; mAP@0.5: 0.0536; mAP@0.5-0.95: 0.0273. Changing input size, because test images are much larger than training images does not make a difference. 
 
