@@ -10,9 +10,9 @@ Therefore, to maintain fairness, it is crucial to ensure the dice are unbiased a
 This is where a Deep Learning-based computer vision solution comes in, because this is an ideal case for automation. I will develop an end-to-end pipeline that takes in images of rolled dice of various types on a variety of backgrounds (tables and game boards), detect and localise the dice within the image, and classify the dice based on the side facing up. The predictions will be output to a log file that compiles the results for one set of dice over the entire game session, which, at the end of the session, produces statistics for determining the fairness of the dice. <br/><br/>
 ## Plan of action
 1) I have found a public [dataset](https://public.roboflow.com/object-detection/dice/) of (approximately) isometric images of dice with class labels and bounding boxes, some on a table and some on a Catan board. An example is shown below. I will use this dataset for pretraining a yolov5 model in PyTorch;
-2) I will collect a relatively small set of data using my colleague's own set of dice, on a background and under lighting conditions comparable to in a *real* gaming session;    ***<--Currently Here***
+2) I will collect a relatively small set of data using my colleague's own set of dice, on a background and under lighting conditions comparable to in a *real* gaming session;
 3) I will label the images by drawing bounding boxes around the dice in the images, specifically around the top side only, because in the isometric view sides of the dice facing sideways are also visible and can potentially confuse the model;
-4) I will fine tune the pretrained model on this new dataset;
+4) I will fine tune the pretrained model on this new dataset;     ***<--Currently Here*** 
 5) If the performance is good enough (>0.95 on the F1 score metric on each individual class as tentatively agreed), we will deploy this model to run on a PC which my colleague will bring to the next gaming session and test it *in production*;
 6) If the performance degrades on *real* data, I will add images collected there to the training data and tune the model again.
 
@@ -21,13 +21,26 @@ This is where a Deep Learning-based computer vision solution comes in, because t
 Example from the public dice dataset<br/>
 <br/>
 ## Change log
-v1.08 Trained for 500 epochs from COCO weights with SGD optimiser and up-down random flip. Train and val losses still drop slightly more slowly than v01.5; up-down random flip doesn't seem to help with val performance either, possibly because data don't have much variation since images all taken from a similar viewpoint.<br/>
-v1.07 Trained for 500 epochs from COCO weights with Adam optimiser, without up-down random flip. Train and val losses still drop more slowly than v01.5; adam optimiser seems to converge less efficiently than SGD for this model<br/>
-v1.06 Trained for 500 epochs from COCO weights with Adam optimiser instead of SGD and added p=0.5 up-down random flip augmentation. Losses drop much more slowly than v01.5; at the end of 500 epochs losses are still dropping and mAP@0.5 ~0.90 and F1 0.84 at 0.409 confidence.<br/>
+v1.11 As an ablation test, re-training from ImageNet weights directly on the small dataset does not produce comparable results, as the model cannot learn the right, specific features of dice faces from only the small number of examples. This confirms that the pre-training on the large dataset of dice is essential.
+
+v1.10 Split the new dataset of 20 images into 14:6 train:val. Fine-tuned pretrained model on this small dataset. Experimented with: 1) Adam optimizer better than SGD; 2) 0.001 LR better than 0.01; 3) Allowing all layers to train better than freezing parameters of the first 10 layers; 4) 1024 input image size vastly better than 512, 2048 even better. Initial baseline performance plateaus after 500 epochs with mAP@0.5 ~0.44, F1 score 0.41 at 0.179 confidence. Best run performance plateaus after 50 epochs with mAP@0.5 ~0.995 and F1 1.0 at 0.836 confidence. The input image size heavily affects detection accuracy; inference and training should be on the same scale. 
+
+v1.09 The pre-trained model performs poorly on the new test dataset, which consists of much higher resolution images (4032x3024) taken by an iPhone, of different-looking dice collected in lighting and background conditions dissimiliar to the pre-training dataset. Based on labels manually created by myself, for all classes Precision: 0.0836; Recall: 0.21; mAP@0.5: 0.0536; mAP@0.5-0.95: 0.0273. Changing input size, because test images are much larger than training images does not make a difference. 
+
+v1.08 Trained for 500 epochs from COCO weights with SGD optimiser and up-down random flip. Train and val losses still drop slightly more slowly than v01.5; up-down random flip doesn't seem to help with val performance either, possibly because data don't have much variation since images all taken from a similar viewpoint.
+
+v1.07 Trained for 500 epochs from COCO weights with Adam optimiser, without up-down random flip. Train and val losses still drop more slowly than v01.5; adam optimiser seems to converge less efficiently than SGD for this model.
+
+v1.06 Trained for 500 epochs from COCO weights with Adam optimiser instead of SGD and added p=0.5 up-down random flip augmentation. Losses drop much more slowly than v01.5; at the end of 500 epochs losses are still dropping and mAP@0.5 ~0.90 and F1 0.84 at 0.409 confidence.
+
 v1.05 Trained for 500 epochs, losses mostly plateured. On val set mAP@0.5 0.988; F1 0.97 at 0.528 confidence for all classes; no notable variation among 6 classes.<br/>
-v1.04 Trained for 100 epochs, losses still dropping. mAP@0.5 ~0.45<br/>
-v1.03 Prepared files in accordance with yolov5 requirements<br/>
-v1.02 Constructed data augmentation pipeline with Albumentations, which also transforms bounding boxes and labels accordingly<br/>
-v1.01 Constructed pytorch datasets and bounding box visualisation<br/>
+v1.04 Trained for 100 epochs, losses still dropping. mAP@0.5 ~0.45
+
+v1.03 Prepared files in accordance with yolov5 requirements.
+
+v1.02 Constructed data augmentation pipeline with Albumentations, which also transforms bounding boxes and labels accordingly.
+
+v1.01 Constructed pytorch datasets and bounding box visualisation.
+
 ### 09.08.2021
-v1.0 Constructed dataframe for metadata<br/>
+v1.0 Constructed dataframe for metadata.
