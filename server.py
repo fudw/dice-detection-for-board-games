@@ -21,7 +21,7 @@ class StreamInput(BaseModel):
 
 model_dice = torch.hub.load(
     "ultralytics/yolov5", 
-    "custom", path="best.pt", 
+    "custom", path="weights/best.pt", 
     force_reload=False, 
     device="cuda" if torch.cuda.is_available() else "cpu")
 model_dice.conf = 0.6
