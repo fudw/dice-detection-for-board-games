@@ -145,6 +145,6 @@ def detect_return_labels(client_input: StreamInput):
 
 nest_asyncio.apply()
 
-host = "0.0.0.0" if os.getenv("DOCKER-SETUP") else "127.0.0.1"
+host = "0.0.0.0" if os.getenv("container") else "127.0.0.1"
 
-uvicorn.run(app, host=host, port=8080)
+uvicorn.run(app, host=host, port=80)
