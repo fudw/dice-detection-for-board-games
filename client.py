@@ -15,7 +15,7 @@ save_dir = os.path.join(os.getcwd(), "misclassified")
 if not os.path.isdir(save_dir):
     os.mkdir(save_dir)
 
-base_url = "http://127.0.0.1:8080"
+base_url = "0.0.0.0" if os.getenv("container") else "127.0.0.1"
 img_endpoint = "/predict/to-img"
 b64_img_endpoint = "/predict/to-b64"
 json_endpoint = "/predict/to-json"
