@@ -15,7 +15,7 @@ save_dir = os.path.join(os.getcwd(), "saved_images")
 if not os.path.isdir(save_dir):
     os.mkdir(save_dir)
 
-base_url = os.getenv("url", default="http://0.0.0.0:8080") if os.getenv("container") else "127.0.0.1"
+base_url = os.getenv("url", default="http://0.0.0.0:80") if os.getenv("container") else "127.0.0.1"
 img_endpoint = "/predict/to-img"
 b64_img_endpoint = "/predict/to-b64"
 json_endpoint = "/predict/to-json"
