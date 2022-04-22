@@ -10,7 +10,7 @@ import os
 from datetime import datetime
 import pandas as pd
 
-save_dir = os.path.join(os.getcwd(), "saved_images")
+save_dir = os.getenv("output", default="/home/saved_images") if os.getenv("container") else os.join(os.getcwd(), "saved_images")
 
 if not os.path.isdir(save_dir):
     os.mkdir(save_dir)
