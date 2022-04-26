@@ -28,6 +28,8 @@ and the confusion matrix on the validation set:
 
 
 ## Change log
+v1.12 Re-train starting from new checkpoints of yolov5 to make use of more efficient model architectures.
+
 v1.11 As an ablation test, re-training from ImageNet weights directly on the small dataset does not produce comparable results, as the model cannot learn the right, specific features of dice faces from only the small number of examples. This confirms that the pre-training on the large dataset of dice is essential.
 
 v1.10 Split the new dataset of 20 images into 14:6 train:val. Fine-tuned pretrained model on this small dataset. Experimented with: 1) Adam optimizer better than SGD; 2) 0.001 LR better than 0.01; 3) Allowing all layers to train better than freezing parameters of the first 10 layers; 4) 1024 input image size vastly better than 512, 2048 even better. Initial baseline performance plateaus after 500 epochs with mAP@0.5 ~0.44, F1 score 0.41 at 0.179 confidence. Best run performance plateaus after 50 epochs with mAP@0.5 ~0.995 and F1 1.0 at 0.836 confidence. The input image size heavily affects detection accuracy; inference and training should be on the same scale. 
